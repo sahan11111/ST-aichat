@@ -6,11 +6,16 @@ The application provides a ChatGPT-style interface where users can register, cre
 
 The project is designed with a strong focus on **security, clean architecture, scalability, API separation, and production-ready development practices**.
 
+## 🚀 Live Demo
+
+Try the deployed application: [Open AI Chat](https://frontend-kohl-eight-82.vercel.app/)
+
 ---
 
 ## 📌 Table of Contents
 
 - [Features](#-features)
+- [Live Demo](#-live-demo)
 - [Tech Stack](#-tech-stack)
 - [Architecture](#-architecture)
 - [Project Structure](#-project-structure)
