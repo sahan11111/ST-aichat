@@ -1,586 +1,318 @@
-# 🤖 AI Chat Application
+<div align="center">
 
-A modern, secure, full-stack AI chat application built with **Next.js, TypeScript, FastAPI, PostgreSQL, and a free-tier AI API provider**.
+# 🤖 AI Chat
 
-The application provides a ChatGPT-style interface where users can register, create conversations, send messages, receive AI-generated responses, and manage their chat history.
+### A secure, full-stack, ChatGPT-style AI chat application
 
-The project is designed with a strong focus on **security, clean architecture, scalability, API separation, and production-ready development practices**.
+Built with **Next.js · TypeScript · FastAPI · PostgreSQL · Groq / Gemini**
 
-## 🚀 Live Demo
+<br/>
 
-Try the deployed application: [Open AI Chat](https://frontend-kohl-eight-82.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Open_App-success?style=for-the-badge)](https://frontend-kohl-eight-82.vercel.app/)
+
+<br/>
+
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Vercel](https://img.shields.io/badge/Frontend-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
+![Render](https://img.shields.io/badge/Backend-Render-46E3B7?style=flat-square&logo=render&logoColor=white)
+
+</div>
+
+---
+
+## 🌐 Live Demo
+
+> **👉 [https://frontend-kohl-eight-82.vercel.app/](https://frontend-kohl-eight-82.vercel.app/)**
+
+| Item | Details |
+|---|---|
+| **Live app** | [frontend-kohl-eight-82.vercel.app](https://frontend-kohl-eight-82.vercel.app/) |
+| **Frontend hosting** | Vercel |
+| **Backend hosting** | Render (FastAPI) |
+| **How to try it** | Register an account → start a new chat → send a message |
+
+<div align="center">
+
+<a href="https://frontend-kohl-eight-82.vercel.app/">
+  <img src="https://image.thum.io/get/width/1200/crop/700/https://frontend-kohl-eight-82.vercel.app/" alt="AI Chat live preview" width="800" />
+</a>
+
+<sub>Live preview of the running app. Click the image to open it.</sub>
+
+</div>
+
+<!-- Optional: replace the live preview above with your own screenshot or GIF:
+![AI Chat Screenshot](./docs/screenshot.png)
+-->
+
+---
+
+> 💤 **Note:** the backend runs on Render. If it is on a free plan, the first request after a period of inactivity can take up to a minute while the server wakes up.
+
+---
+
+## 📖 About
+
+AI Chat lets users register, create conversations, send messages, receive AI-generated responses, and manage their chat history, all through a clean ChatGPT-style interface.
+
+The project focuses on **security, clean architecture, scalability, API separation, and production-ready practices**. The browser never talks to the AI provider directly; every request goes through the FastAPI backend, which keeps API keys private.
 
 ---
 
 ## 📌 Table of Contents
 
-- [Features](#-features)
 - [Live Demo](#-live-demo)
+- [Features](#-features)
 - [Tech Stack](#-tech-stack)
 - [Architecture](#-architecture)
 - [Project Structure](#-project-structure)
-- [Prerequisites](#-prerequisites)
-- [Getting Started](#-getting-started)
+- [Quick Start](#-quick-start)
 - [Environment Variables](#-environment-variables)
-- [Backend Setup](#-backend-setup)
-- [Frontend Setup](#-frontend-setup)
-- [Database Setup](#-database-setup)
-- [Running the Application](#-running-the-application)
 - [API Endpoints](#-api-endpoints)
 - [Authentication](#-authentication)
-- [AI Integration](#-ai-integration)
 - [Security](#-security)
 - [Testing](#-testing)
 - [Docker](#-docker)
-- [Development Roadmap](#-development-roadmap)
+- [Roadmap](#-development-roadmap)
 - [Future Improvements](#-future-improvements)
 - [Troubleshooting](#-troubleshooting)
 - [Contributing](#-contributing)
-- [License](#-license)
+- [Author](#-author)
 
 ---
 
-# ✨ Features
+## ✨ Features
 
-## 👤 Authentication
+<table>
+<tr>
+<td width="50%" valign="top">
 
-- User registration
-- User login
-- JWT authentication
-- Access tokens
-- Refresh tokens
+### 👤 Authentication
+- Registration & login
+- JWT access + refresh tokens
 - Password hashing
 - Protected API routes
-- Current user endpoint
-- Logout
-- Account management
+- Current-user endpoint
+- Logout & account management
 
-## 💬 AI Chat
-
-- Create new conversations
-- Send messages to AI
-- Receive AI-generated responses
+### 💬 AI Chat
+- Create, rename, delete conversations
 - Continue previous conversations
-- Conversation history
-- Rename conversations
-- Delete conversations
+- Full conversation history
 - Search conversations
-- AI response streaming
+- Streaming AI responses
 
-## 🎨 Modern UI
+</td>
+<td width="50%" valign="top">
 
+### 🎨 Modern UI
 - ChatGPT-style interface
-- Responsive design
-- Desktop support
-- Tablet support
-- Mobile support
-- Dark mode
-- Light mode
-- Loading states
-- Error states
-- Empty states
+- Responsive: desktop, tablet, mobile
+- Dark & light mode
+- Loading, error and empty states
 - Markdown support
 
-## 🔐 Security
-
-- Password hashing
-- JWT authentication
-- Authorization checks
+### 🔐 Security
+- Authorization checks & per-user data isolation
 - API rate limiting
-- Input validation
-- CORS configuration
-- Security headers
-- Environment variables
-- API key protection
-- Secure error handling
-- User data isolation
+- Input validation (Pydantic)
+- CORS & security headers
+- API keys kept server-side
+- Safe, generic error responses
 
-## 🧪 Testing
+</td>
+</tr>
+</table>
 
-- Authentication tests
-- Conversation tests
-- Message tests
-- Authorization tests
-- AI service tests
-- API validation tests
-
-## 🐳 DevOps
-
-- Docker support
-- Docker Compose
-- PostgreSQL container
-- Backend container
-- Frontend container
-- Environment-based configuration
+**🧪 Testing:** auth, conversations, messages, authorization, AI service and API validation tests.
+**🐳 DevOps:** Docker, Docker Compose, PostgreSQL / backend / frontend containers, environment-based config.
 
 ---
 
-# 🛠 Tech Stack
+## 🛠 Tech Stack
 
-## Frontend
-
-| Technology | Purpose |
+| Layer | Technologies |
 |---|---|
-| Next.js | React framework |
-| TypeScript | Type safety |
-| Tailwind CSS | Styling |
-| React | UI |
-| Fetch / Axios | API communication |
+| **Frontend** | Next.js, React, TypeScript, Tailwind CSS, Fetch / Axios |
+| **Backend** | FastAPI, Python, Pydantic, SQLAlchemy, Alembic, JWT, Pytest |
+| **Database** | PostgreSQL |
+| **AI** | Groq, Google Gemini, or any compatible free-tier provider |
+| **Infrastructure** | Docker, Docker Compose, Git, GitHub, Vercel (frontend), Render (backend) |
 
-## Backend
-
-| Technology | Purpose |
-|---|---|
-| FastAPI | REST API |
-| Python | Backend language |
-| Pydantic | Data validation |
-| SQLAlchemy | ORM |
-| Alembic | Database migrations |
-| JWT | Authentication |
-| Pytest | Testing |
-
-## Database
-
-| Technology | Purpose |
-|---|---|
-| PostgreSQL | Primary database |
-
-## AI
-
-The application supports a free-tier AI provider such as:
-
-- Groq
-- Google Gemini
-- Other compatible providers
-
-The AI provider is isolated behind an internal service layer so it can be replaced without rewriting the chat system.
-
-## Infrastructure
-
-- Docker
-- Docker Compose
-- Git
-- GitHub
+The AI provider sits behind an internal service layer, so it can be swapped without rewriting the chat system.
 
 ---
 
-# 🏗 Architecture
-
-The application follows a separated frontend/backend architecture.
+## 🏗 Architecture
 
 ```text
 ┌─────────────────────────────┐
 │          Browser            │
-│                             │
 │      Next.js + React        │
 └──────────────┬──────────────┘
-               │
-               │ REST API / HTTP
+               │  REST API / HTTP
                ▼
 ┌─────────────────────────────┐
 │          FastAPI            │
-│                             │
-│  Authentication             │
-│  Chat API                   │
-│  Conversation API           │
-│  Business Logic             │
-│  AI Service                 │
+│  Auth · Chat · Conversations│
+│  Business Logic · AI Service│
 └──────────────┬──────────────┘
-               │
        ┌───────┴────────┐
-       │                │
        ▼                ▼
 ┌──────────────┐  ┌─────────────────┐
 │ PostgreSQL   │  │   AI Provider   │
-│              │  │                 │
 │ Users        │  │ Groq / Gemini   │
-│ Conversations│ │ / Other         │
+│ Conversations│  │ / Other         │
 │ Messages     │  │                 │
 └──────────────┘  └─────────────────┘
 ```
 
-### Important Security Rule
-
-The browser never communicates directly with the AI provider.
-
-```text
-Next.js
-   │
-   ▼
-FastAPI
-   │
-   ▼
-AI Provider
-```
-
-The AI API key exists only on the backend.
+> 🔒 **Security rule:** the browser never communicates directly with the AI provider. The AI API key exists only on the backend.
 
 ---
 
-# 📁 Project Structure
+## 📁 Project Structure
+
+<details>
+<summary><b>Click to expand</b></summary>
 
 ```text
 ai-chat/
-│
 ├── backend/
 │   ├── app/
 │   │   ├── main.py
-│   │   │
-│   │   ├── core/
-│   │   │   ├── config.py
-│   │   │   ├── database.py
-│   │   │   └── security.py
-│   │   │
-│   │   ├── models/
-│   │   │   ├── user.py
-│   │   │   ├── conversation.py
-│   │   │   └── message.py
-│   │   │
-│   │   ├── schemas/
-│   │   │   ├── auth.py
-│   │   │   ├── user.py
-│   │   │   ├── conversation.py
-│   │   │   └── chat.py
-│   │   │
+│   │   ├── core/        # config, database, security
+│   │   ├── models/      # user, conversation, message
+│   │   ├── schemas/     # auth, user, conversation, chat
 │   │   ├── api/
 │   │   │   ├── deps.py
-│   │   │   └── routes/
-│   │   │       ├── auth.py
-│   │   │       ├── users.py
-│   │   │       ├── conversations.py
-│   │   │       └── chat.py
-│   │   │
-│   │   ├── services/
-│   │   │   ├── auth_service.py
-│   │   │   ├── chat_service.py
-│   │   │   └── conversation_service.py
-│   │   │
-│   │   ├── ai/
-│   │   │   ├── base.py
-│   │   │   ├── groq_provider.py
-│   │   │   └── gemini_provider.py
-│   │   │
+│   │   │   └── routes/  # auth, users, conversations, chat
+│   │   ├── services/    # auth, chat, conversation services
+│   │   ├── ai/          # base, groq_provider, gemini_provider
 │   │   └── utils/
-│   │       └── helpers.py
-│   │
 │   ├── migrations/
 │   ├── tests/
-│   │   ├── test_auth.py
-│   │   ├── test_chat.py
-│   │   └── test_conversations.py
-│   │
 │   ├── .env.example
-│   ├── .gitignore
 │   ├── requirements.txt
 │   ├── alembic.ini
-│   ├── Dockerfile
-│   └── README.md
+│   └── Dockerfile
 │
 ├── frontend/
-│   ├── app/
-│   │   ├── page.tsx
-│   │   │
-│   │   ├── login/
-│   │   │   └── page.tsx
-│   │   │
-│   │   ├── register/
-│   │   │   └── page.tsx
-│   │   │
-│   │   ├── chat/
-│   │   │   ├── page.tsx
-│   │   │   └── [conversationId]/
-│   │   │       └── page.tsx
-│   │   │
-│   │   └── settings/
-│   │       └── page.tsx
-│   │
-│   ├── components/
-│   │   ├── auth/
-│   │   ├── chat/
-│   │   └── ui/
-│   │
-│   ├── hooks/
-│   │   ├── useAuth.ts
-│   │   └── useChat.ts
-│   │
-│   ├── lib/
-│   │   ├── api.ts
-│   │   ├── auth.ts
-│   │   └── utils.ts
-│   │
-│   ├── providers/
-│   │   └── AuthProvider.tsx
-│   │
+│   ├── app/             # login, register, chat, settings
+│   ├── components/      # auth, chat, ui
+│   ├── hooks/           # useAuth, useChat
+│   ├── lib/             # api, auth, utils
+│   ├── providers/       # AuthProvider
 │   ├── types/
-│   │   ├── auth.ts
-│   │   ├── chat.ts
-│   │   └── user.ts
-│   │
 │   ├── public/
-│   │
 │   ├── .env.local.example
-│   ├── .gitignore
-│   ├── package.json
-│   └── README.md
+│   └── package.json
 │
 ├── docker-compose.yml
-├── .gitignore
 └── README.md
 ```
 
+</details>
+
 ---
 
-# 📋 Prerequisites
+## ⚡ Quick Start
 
-Before starting, install:
+### Prerequisites
 
 - Python 3.11+
-- Node.js 20+
-- npm
+- Node.js 20+ and npm
 - PostgreSQL 15+
 - Git
-- Docker (optional)
+- Docker *(optional)*
 
-Check versions:
-
-```bash
-python --version
-node --version
-npm --version
-psql --version
-git --version
-```
-
----
-
-# 🚀 Getting Started
-
-Clone the repository:
+### 1. Clone
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ai-chat.git
-```
-
-Enter the project:
-
-```bash
+git clone https://github.com/sahan11111/ai-chat.git
 cd ai-chat
 ```
 
-The project contains two applications:
-
-```text
-backend/
-frontend/
-```
-
----
-
-# 🔧 Environment Variables
-
-## Backend
-
-Create:
-
-```text
-backend/.env
-```
-
-Example:
-
-```env
-DATABASE_URL=postgresql+asyncpg://postgres:password@localhost:5432/ai_chat
-
-SECRET_KEY=change-this-to-a-long-random-secret
-
-ACCESS_TOKEN_EXPIRE_MINUTES=30
-
-REFRESH_TOKEN_EXPIRE_DAYS=7
-
-AI_PROVIDER=groq
-
-AI_API_KEY=your-ai-api-key
-
-AI_MODEL=your-model-name
-
-FRONTEND_URL=http://localhost:3000
-```
-
-### ⚠️ Important
-
-Never commit `.env` to Git.
-
-Never expose:
-
-```env
-AI_API_KEY
-SECRET_KEY
-DATABASE_URL
-```
-
-to the frontend.
-
----
-
-# 🎨 Frontend Environment Variables
-
-Create:
-
-```text
-frontend/.env.local
-```
-
-Example:
-
-```env
-NEXT_PUBLIC_API_URL=http://localhost:8000
-```
-
-Only variables prefixed with `NEXT_PUBLIC_` should be exposed to the browser.
-
-Never put:
-
-```env
-NEXT_PUBLIC_AI_API_KEY=
-```
-
-in the frontend.
-
----
-
-# 🐍 Backend Setup
-
-Go to the backend:
+### 2. Backend
 
 ```bash
 cd backend
-```
 
-Create a virtual environment:
-
-### Windows
-
-```bash
+# create & activate a virtual environment
 python -m venv venv
-venv\Scripts\activate
-```
+venv\Scripts\activate          # Windows
+source venv/bin/activate       # Linux / macOS
 
-### Linux/macOS
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-Install dependencies:
-
-```bash
 pip install -r requirements.txt
 ```
 
----
-
-# 🗄 Database Setup
-
-Create a PostgreSQL database:
+Create the database and run migrations:
 
 ```sql
 CREATE DATABASE ai_chat;
 ```
 
-Configure the connection:
-
-```env
-DATABASE_URL=postgresql+asyncpg://postgres:password@localhost:5432/ai_chat
-```
-
-Run migrations:
-
 ```bash
 alembic upgrade head
-```
-
----
-
-# ▶️ Run Backend
-
-From the `backend` directory:
-
-```bash
 uvicorn app.main:app --reload
 ```
 
-Backend:
+| | URL |
+|---|---|
+| API | http://localhost:8000 |
+| Swagger docs | http://localhost:8000/docs |
+| ReDoc | http://localhost:8000/redoc |
+| Health check | http://localhost:8000/health |
 
-```text
-http://localhost:8000
-```
+### 3. Frontend
 
-API documentation:
-
-```text
-http://localhost:8000/docs
-```
-
-ReDoc:
-
-```text
-http://localhost:8000/redoc
-```
-
-Health check:
-
-```text
-http://localhost:8000/health
-```
-
----
-
-# ⚛️ Frontend Setup
-
-Open another terminal.
-
-Go to:
+In a new terminal:
 
 ```bash
 cd frontend
-```
-
-Install dependencies:
-
-```bash
 npm install
+npm run dev
 ```
 
-Create:
+Open **http://localhost:3000**.
 
-```text
-.env.local
+---
+
+## 🔧 Environment Variables
+
+### Backend: `backend/.env`
+
+```env
+DATABASE_URL=postgresql+asyncpg://postgres:password@localhost:5432/ai_chat
+SECRET_KEY=change-this-to-a-long-random-secret
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+REFRESH_TOKEN_EXPIRE_DAYS=7
+AI_PROVIDER=groq
+AI_API_KEY=your-ai-api-key
+AI_MODEL=your-model-name
+FRONTEND_URL=http://localhost:3000
 ```
 
-Add:
+### Frontend: `frontend/.env.local`
 
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
 
-Run the development server:
-
-```bash
-npm run dev
-```
-
-Frontend:
-
-```text
-http://localhost:3000
-```
+> ⚠️ **Never commit `.env`.** Never expose `AI_API_KEY`, `SECRET_KEY` or `DATABASE_URL` to the frontend, and never create variables like `NEXT_PUBLIC_AI_API_KEY`. Only `NEXT_PUBLIC_*` variables are sent to the browser.
 
 ---
 
-# 🔌 API Endpoints
+## 🔌 API Endpoints
 
-## Authentication
+<details open>
+<summary><b>Authentication</b></summary>
 
 | Method | Endpoint | Description |
 |---|---|---|
@@ -590,227 +322,67 @@ http://localhost:3000
 | POST | `/api/auth/logout` | Logout |
 | GET | `/api/auth/me` | Current user |
 
----
+</details>
 
-## Conversations
+<details open>
+<summary><b>Conversations & Messages</b></summary>
 
 | Method | Endpoint | Description |
 |---|---|---|
-| GET | `/api/conversations` | Get conversations |
+| GET | `/api/conversations` | List conversations |
 | POST | `/api/conversations` | Create conversation |
 | GET | `/api/conversations/{id}` | Get conversation |
 | PATCH | `/api/conversations/{id}` | Update conversation |
 | DELETE | `/api/conversations/{id}` | Delete conversation |
-
----
-
-## Messages
-
-| Method | Endpoint | Description |
-|---|---|---|
 | GET | `/api/conversations/{id}/messages` | Get messages |
 | POST | `/api/conversations/{id}/messages` | Create message |
 
----
+</details>
 
-## AI Chat
+<details open>
+<summary><b>AI Chat</b></summary>
 
 | Method | Endpoint | Description |
 |---|---|---|
 | POST | `/api/chat` | Send message |
 | POST | `/api/chat/stream` | Stream AI response |
 
+</details>
+
+Full interactive docs are available at `/docs` when the backend is running.
+
 ---
 
-# 🔐 Authentication
-
-The application uses JWT-based authentication.
-
-Typical flow:
+## 🔐 Authentication
 
 ```text
-User
- │
- │ Login
- ▼
-FastAPI
- │
- │ Verify password
- ▼
-JWT Access Token
- │
- ▼
-Next.js
- │
- │ Authorization: Bearer <token>
- ▼
-Protected API
+User ──login──► FastAPI ──verify password──► JWT Access Token
+                                                   │
+                                                   ▼
+                     Next.js ── Authorization: Bearer <token> ──► Protected API
 ```
 
 Protected endpoints verify the authenticated user before returning data.
 
----
+### 👤 User Data Isolation
 
-# 👤 User Data Isolation
-
-A user must only access their own conversations.
-
-For example:
-
-```text
-User A
- ├── Conversation 1
- └── Conversation 2
-
-User B
- ├── Conversation 3
- └── Conversation 4
-```
-
-User A must never be able to access:
-
-```text
-Conversation 3
-Conversation 4
-```
-
-The backend must always verify ownership.
+Every conversation belongs to exactly one user. The backend always verifies ownership, so User A can never read or modify User B's conversations or messages.
 
 ---
 
-# 🤖 AI Integration
+## 🔒 Security
 
-The AI provider is accessed only from FastAPI.
+| Area | Practice |
+|---|---|
+| **Passwords** | Hashed before storage, never stored in plain text |
+| **API keys** | Backend environment variables only |
+| **Validation** | Pydantic on all incoming data, e.g. `message: str = Field(min_length=1, max_length=10000)` |
+| **Rate limiting** | Stricter limits on `/login`, `/register`, `/chat`, `/chat/stream` |
+| **CORS** | Only trusted frontend origins allowed |
+| **Headers** | `Content-Security-Policy`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Strict-Transport-Security` |
+| **Errors** | Generic message to clients, details only in server logs |
 
-```text
-Next.js
-   │
-   │ User message
-   ▼
-FastAPI
-   │
-   │ Auth + validation
-   ▼
-AI Service
-   │
-   ▼
-AI Provider
-   │
-   │ AI response
-   ▼
-FastAPI
-   │
-   ▼
-Next.js
-```
-
-The frontend never receives the AI provider API key.
-
----
-
-# 🔒 Security
-
-Security is a major part of this project.
-
-## Password Security
-
-Passwords are hashed before storage.
-
-Never store:
-
-```text
-password123
-```
-
-directly in the database.
-
----
-
-## API Key Protection
-
-AI API keys are stored only in backend environment variables.
-
-```env
-AI_API_KEY=secret
-```
-
-Never use:
-
-```env
-NEXT_PUBLIC_AI_API_KEY=secret
-```
-
----
-
-## Input Validation
-
-FastAPI validates all incoming data using Pydantic.
-
-Example:
-
-```python
-message: str = Field(
-    min_length=1,
-    max_length=10000
-)
-```
-
----
-
-## Rate Limiting
-
-Rate limiting should be applied especially to:
-
-```text
-/login
-/register
-/chat
-/chat/stream
-```
-
-AI endpoints should have stricter limits because every request can consume provider resources.
-
----
-
-## CORS
-
-Only trusted frontend origins should be allowed.
-
-Development:
-
-```text
-http://localhost:3000
-```
-
-Production should use the actual frontend domain.
-
----
-
-## Security Headers
-
-Production deployment should configure headers such as:
-
-```text
-Content-Security-Policy
-X-Content-Type-Options
-X-Frame-Options
-Referrer-Policy
-Strict-Transport-Security
-```
-
----
-
-## Error Handling
-
-Do not expose internal errors to users.
-
-Avoid returning:
-
-```text
-Database connection failed at /app/services/database.py line 83
-```
-
-Instead return:
+Example error response:
 
 ```json
 {
@@ -819,439 +391,159 @@ Instead return:
 }
 ```
 
-Detailed information should be available only in server logs.
+---
+
+## 🧪 Testing
+
+```bash
+cd backend
+pytest                  # run all tests
+pytest --cov=app        # with coverage
+```
+
+Covers authentication, authorization, users, conversations, messages, AI service, validation and error handling.
 
 ---
 
-# 🧪 Testing
-
-Run backend tests:
+## 🐳 Docker
 
 ```bash
-pytest
+docker compose up --build     # build & start
+docker compose up -d          # detached mode
+docker compose logs -f        # view logs
+docker compose down           # stop
 ```
 
-Run with coverage:
+| Service | Port |
+|---|---|
+| Frontend (Next.js) | `3000` |
+| Backend (FastAPI) | `8000` |
+| PostgreSQL | `5432` |
 
-```bash
-pytest --cov=app
-```
+---
 
-Test areas include:
+## 🗺 Development Roadmap
+
+- [x] **Phase 1:** Project architecture & setup
+- [ ] **Phase 2:** Backend: database, models, migrations, JWT auth
+- [ ] **Phase 3:** Chat: conversation/message models, CRUD, AI provider integration
+- [ ] **Phase 4:** Frontend: login, register, chat UI, sidebar, history
+- [ ] **Phase 5:** Advanced: streaming, Markdown, code blocks, search, dark mode
+- [ ] **Phase 6:** Security: rate limiting, headers, CORS, authorization audit
+- [ ] **Phase 7:** Testing: unit, API, auth, authorization, chat tests
+- [ ] **Phase 8:** Deployment
+  - [x] Frontend deployed on Vercel
+  - [x] Backend deployed on Render
+  - [ ] Production PostgreSQL
+  - [ ] HTTPS & monitoring
+
+---
+
+## 🚀 Future Improvements
+
+| Category | Ideas |
+|---|---|
+| **AI** | Multiple models & providers, custom system prompts, AI-generated titles |
+| **Content** | File uploads, PDF chat, image understanding, voice input/output |
+| **Sharing** | Conversation sharing, chat export / import |
+| **Platform** | Token usage tracking, usage limits, admin dashboard |
+| **Infra** | Redis caching, background jobs, WebSockets |
+| **RAG** | Vector search (pgvector, Qdrant, Chroma, FAISS), knowledge-base chat |
+
+<details>
+<summary><b>🧠 Future RAG architecture</b></summary>
 
 ```text
-Authentication
-Authorization
-Users
-Conversations
-Messages
-AI service
-Validation
-Error handling
+User → Next.js → FastAPI ─┬─► PostgreSQL
+                          │
+                          └─► Embedding Service → Vector DB
+                                                     │
+                                          Relevant documents
+                                                     ▼
+                                    AI Provider → Generated answer
 ```
+
+</details>
 
 ---
 
-# 🐳 Docker
+## 🛠 Troubleshooting
 
-The application can be run using Docker Compose.
-
-Start the services:
-
-```bash
-docker compose up --build
-```
-
-Stop the services:
-
-```bash
-docker compose down
-```
-
-Start in detached mode:
-
-```bash
-docker compose up -d
-```
-
-View logs:
-
-```bash
-docker compose logs -f
-```
-
-Expected architecture:
-
-```text
-┌───────────────────────────┐
-│        Frontend           │
-│        Next.js            │
-│        :3000              │
-└─────────────┬─────────────┘
-              │
-              ▼
-┌───────────────────────────┐
-│         Backend           │
-│         FastAPI           │
-│         :8000             │
-└─────────────┬─────────────┘
-              │
-              ▼
-┌───────────────────────────┐
-│        PostgreSQL         │
-│         :5432             │
-└───────────────────────────┘
-```
+| Problem | What to check |
+|---|---|
+| **Backend won't start** | `python --version`, activate the venv, re-run `pip install -r requirements.txt` |
+| **Database error** | `DATABASE_URL` is correct, PostgreSQL is running, the database exists |
+| **AI API error** | `AI_API_KEY`, `AI_PROVIDER`, `AI_MODEL`, and that the model is available on your free tier |
+| **CORS error** | `FRONTEND_URL` matches the frontend origin |
+| **Frontend can't reach backend** | `NEXT_PUBLIC_API_URL`, and that `http://localhost:8000/docs` opens |
 
 ---
 
-# 🗺 Development Roadmap
-
-## Phase 1 — Project Setup
-
-- [x] Project architecture
-- [ ] Next.js setup
-- [ ] FastAPI setup
-- [ ] PostgreSQL setup
-- [ ] Environment configuration
-
-## Phase 2 — Backend
-
-- [ ] Database configuration
-- [ ] SQLAlchemy models
-- [ ] Alembic migrations
-- [ ] Authentication
-- [ ] JWT
-- [ ] User management
-
-## Phase 3 — Chat
-
-- [ ] Conversation model
-- [ ] Message model
-- [ ] Conversation CRUD
-- [ ] Chat API
-- [ ] AI provider integration
-
-## Phase 4 — Frontend
-
-- [ ] Login page
-- [ ] Register page
-- [ ] Chat interface
-- [ ] Sidebar
-- [ ] Conversation history
-- [ ] Message input
-- [ ] AI response display
-
-## Phase 5 — Advanced Features
-
-- [ ] Streaming responses
-- [ ] Markdown rendering
-- [ ] Code block support
-- [ ] Conversation search
-- [ ] Rename conversations
-- [ ] Dark mode
-
-## Phase 6 — Security
-
-- [ ] Rate limiting
-- [ ] Security headers
-- [ ] Input validation
-- [ ] CORS configuration
-- [ ] Authorization audit
-- [ ] API key audit
-
-## Phase 7 — Testing
-
-- [ ] Unit tests
-- [ ] API tests
-- [ ] Authentication tests
-- [ ] Authorization tests
-- [ ] Chat tests
-
-## Phase 8 — Deployment
-
-- [ ] Docker
-- [ ] Production environment
-- [ ] HTTPS
-- [ ] PostgreSQL production database
-- [ ] Backend deployment
-- [ ] Frontend deployment
-- [ ] Monitoring
-
----
-
-# 🚀 Future Improvements
-
-Possible future features include:
-
-- Multiple AI models
-- Multiple AI providers
-- File uploads
-- PDF chat
-- Image understanding
-- Voice input
-- Voice output
-- Conversation sharing
-- Chat export
-- Chat import
-- AI-generated conversation titles
-- Custom system prompts
-- User-defined AI settings
-- Token usage tracking
-- Usage limits
-- Admin dashboard
-- Redis caching
-- Background jobs
-- WebSocket support
-- RAG
-- Vector database
-- Semantic search
-- Knowledge-base chat
-
----
-
-# 🧠 Future RAG Architecture
-
-The application can later be extended to support Retrieval-Augmented Generation.
-
-```text
-User
- │
- ▼
-Next.js
- │
- ▼
-FastAPI
- │
- ├──────────────► PostgreSQL
- │
- ▼
-Embedding Service
- │
- ▼
-Vector Database
- │
- ▼
-Relevant Documents
- │
- ▼
-AI Provider
- │
- ▼
-Generated Answer
-```
-
-Possible technologies:
-
-- pgvector
-- Qdrant
-- Chroma
-- FAISS
-
----
-
-# 🛠 Troubleshooting
-
-## Backend does not start
-
-Check:
-
-```bash
-python --version
-```
-
-Check virtual environment:
-
-```bash
-venv\Scripts\activate
-```
-
-Reinstall dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## Database connection error
-
-Check:
-
-```env
-DATABASE_URL=
-```
-
-Make sure PostgreSQL is running.
-
-Verify the database exists.
-
----
-
-## AI API error
-
-Check:
-
-```env
-AI_API_KEY=
-AI_PROVIDER=
-AI_MODEL=
-```
-
-Make sure the selected provider and model are currently available on your account/free tier.
-
----
-
-## CORS error
-
-Check:
-
-```env
-FRONTEND_URL=http://localhost:3000
-```
-
-Make sure the backend allows the frontend origin.
-
----
-
-## Frontend cannot connect to backend
-
-Check:
-
-```env
-NEXT_PUBLIC_API_URL=http://localhost:8000
-```
-
-Then verify:
-
-```text
-http://localhost:8000/docs
-```
-
-is accessible.
-
----
-
-# 📦 Production Checklist
-
-Before deploying to production:
+## 📦 Production Checklist
 
 - [ ] Change `SECRET_KEY`
 - [ ] Use HTTPS
-- [ ] Configure secure CORS
-- [ ] Configure security headers
+- [ ] Configure CORS and security headers
 - [ ] Enable rate limiting
-- [ ] Use production PostgreSQL
+- [ ] Use a production PostgreSQL database
 - [ ] Disable debug mode
-- [ ] Configure logging
-- [ ] Protect environment variables
-- [ ] Rotate secrets when necessary
-- [ ] Configure database backups
-- [ ] Run migrations
-- [ ] Run automated tests
+- [ ] Configure logging and database backups
+- [ ] Run migrations and automated tests
 - [ ] Audit authorization
 - [ ] Check AI API usage limits
-- [ ] Never expose API keys
+- [ ] Protect and rotate secrets
 
 ---
 
-# 🤝 Contributing
+## 🤝 Contributing
 
-Contributions are welcome.
-
-### 1. Fork the repository
+Contributions are welcome!
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ai-chat.git
-```
+# 1. Fork, then clone your fork
+git clone https://github.com/<your-username>/ai-chat.git
 
-### 2. Create a branch
-
-```bash
+# 2. Create a branch
 git checkout -b feature/new-feature
-```
 
-### 3. Make your changes
-
-### 4. Run tests
-
-```bash
+# 3. Make changes, then run tests
 pytest
-```
 
-### 5. Commit
-
-```bash
+# 4. Commit and push
 git add .
 git commit -m "feat: add new feature"
-```
-
-### 6. Push
-
-```bash
 git push origin feature/new-feature
 ```
 
-### 7. Create a Pull Request
+Then open a Pull Request.
 
 ---
 
-# 📄 License
+## 📄 License
 
-This project is intended for educational and portfolio purposes.
-
-Add your preferred license here, for example:
-
-```text
-MIT License
-```
+This project is intended for educational and portfolio purposes. Add your preferred license, for example **MIT**.
 
 ---
 
-# 👨‍💻 Author
+## 👨‍💻 Author
 
-**Your Name**
-
+**Sahan Takhachhen**
 Backend / Full-Stack Developer
 
-### Technologies
+[![GitHub](https://img.shields.io/badge/GitHub-sahan11111-181717?style=flat-square&logo=github)](https://github.com/sahan11111)
 
-```text
-Python
-FastAPI
-Next.js
-TypeScript
-PostgreSQL
-SQLAlchemy
-JWT
-Docker
-AI APIs
-```
+`Python` · `FastAPI` · `Next.js` · `TypeScript` · `PostgreSQL` · `SQLAlchemy` · `JWT` · `Docker` · `AI APIs`
 
 ---
 
-# ⭐ Project Goal
+<div align="center">
 
-The goal of this project is to build a real-world AI chat application while learning and demonstrating:
+### ⭐ Project Goal
 
-```text
-Modern frontend development
-        +
-Backend API development
-        +
-Database design
-        +
-Authentication
-        +
-AI integration
-        +
-Security
-        +
-Testing
-        +
-Docker
-        +
-Production architecture
-```
+Build a real-world AI chat application while demonstrating modern frontend development, backend APIs, database design, authentication, AI integration, security, testing, Docker and production architecture.
 
-If you find this project useful, consider giving it a ⭐ on GitHub.
+**If you find this project useful, please consider giving it a ⭐ on GitHub!**
+
+[🚀 Try the Live Demo](https://frontend-kohl-eight-82.vercel.app/)
+
+</div>
