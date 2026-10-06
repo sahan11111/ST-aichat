@@ -1,6 +1,14 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
+def _async_database_url(value: str) -> str:
+    """Use the asyncpg driver for standard PostgreSQL URLs."""
+    for prefix in ("postgres://", "postgresql://"):
+        if value.startswith(prefix):
+            return "postgresql+asyncpg://" + value[len(prefix):]
+    return value
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
@@ -27,3 +35,4 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+settings.DATABASE_URL = _async_database_url(settings.DATABASE_URL)
